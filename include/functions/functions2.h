@@ -343,12 +343,12 @@ namespace linked_list {
 
     template <class T>
     void ReverseLinkedList(LinkedList<T>& list) {
-        Node<T>* ptr = list.GetHead();
+        Node<T>* ptr = list.GetHead(); //птр теперь голова
         for (int i = 0; i < list.GetSize(); i++) {
-            Node<T>* temp = ptr->GetPrev();
-            ptr->SetPrev(ptr->GetNext());
-            ptr->SetNext(temp);
-            ptr = ptr->GetPrev();
+            Node<T>* temp = ptr->GetPrev(); //в темп записался хвост
+            ptr->SetPrev(ptr->GetNext()); //в хвост записался 2 элемент списка
+            ptr->SetNext(temp); //следующий от головы(птр) элемент это хвост
+            ptr = ptr->GetPrev(); // птр теперь хвост
         }
         list.SetHead(ptr->GetNext());
     }
